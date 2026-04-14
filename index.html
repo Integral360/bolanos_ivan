@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iván Bolaños | Arquitecto</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --bg: #050505;
+      --card: rgba(18,18,18,0.95);
+      --text: #fff;
+      --muted: #c7c7c7;
+      --gold: #f2c94c;
+      --gold-soft: rgba(242,201,76,0.12);
+      --wa: #25D366;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+
+      background:
+        linear-gradient(120deg, transparent 0%, transparent 30%, rgba(242,201,76,0.06) 30.5%, transparent 31%),
+        linear-gradient(145deg, transparent 0%, transparent 60%, rgba(242,201,76,0.05) 60.5%, transparent 61%),
+        linear-gradient(70deg, transparent 0%, transparent 20%, rgba(242,201,76,0.04) 20.5%, transparent 21%),
+        linear-gradient(160deg, transparent 0%, transparent 75%, rgba(242,201,76,0.05) 75.5%, transparent 76%),
+        radial-gradient(circle at top right, rgba(242,201,76,0.08), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(242,201,76,0.05), transparent 20%),
+        #000;
+
+      padding-bottom: 90px;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      padding: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      animation: slideUp 0.8s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .hero {
+      text-align: center;
+      padding: 30px 20px;
+      background: linear-gradient(135deg, rgba(242,201,76,0.08), transparent);
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      top: 20px;
+      left: -40px;
+      transform: rotate(-25deg);
+      opacity: 0.4;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      bottom: 30px;
+      right: -30px;
+      transform: rotate(-25deg);
+      opacity: 0.3;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 10px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+
+    .role {
+      color: var(--gold);
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .content {
+      padding: 18px;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      padding: 14px;
+      border-radius: 14px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+      transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #f2c94c, #d9a600);
+      color: #000;
+    }
+
+    .btn-wa {
+      background: var(--wa);
+      color: #fff;
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      display: block;
+      margin: 10px auto 15px;
+      max-width: 60%;
+    }
+
+    .section {
+      background: rgba(255,255,255,0.03);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section::before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(242,201,76,0.1), transparent);
+      top: -20px;
+      right: -20px;
+    }
+
+    .section h2 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: var(--gold);
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(242,201,76,0.1);
+      color: var(--gold);
+      font-size: 12px;
+      transition: 0.2s;
+    }
+
+    .chip:hover {
+      background: rgba(242,201,76,0.25);
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 12px;
+      color: #888;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .brand strong {
+      color: var(--gold);
+    }
+
+    .sticky {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 10px;
+      background: rgba(0,0,0,0.9);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .sticky a {
+      padding: 14px;
+      text-align: center;
+      border-radius: 12px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .call {
+      background: linear-gradient(135deg, #f2c94c, #d9a600);
+      color: #000;
+    }
+
+    .wa {
+      background: var(--wa);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <div class="hero">
+      <img src="foto.jpeg" class="logo">
+      <h1>Iván Bolaños</h1>
+      <div class="role">Arquitecto</div>
+      <div class="subtitle">
+        Diseño de espacios funcionales, estéticos y sostenibles.
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="actions">
+        <a href="tel:+573178821345" class="btn btn-primary">📞 Llamar</a>
+        <a href="https://wa.me/573178821345" class="btn btn-wa">💬 WhatsApp</a>
+      </div>
+
+      <a href="mailto:arqivanbj@gmail.com" class="btn btn-outline">✉️ Email</a>
+
+      <div class="section">
+        <h2>Perfil profesional</h2>
+        <div class="text">
+          Arquitecto comprometido con el diseño de espacios funcionales, estéticos y sostenibles, orientado a materializar ideas en proyectos que responden a las necesidades de cada cliente.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Enfoque</h2>
+        <div class="features">
+          <span class="chip">Diseño funcional</span>
+          <span class="chip">Estética</span>
+          <span class="chip">Sostenibilidad</span>
+          <span class="chip">Calidad</span>
+          <span class="chip">Cumplimiento</span>
+        </div>
+      </div>
+
+      <a href="https://integral360.com.co" class="brand">
+        Powered by <strong>Integral360</strong>
+      </a>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="sticky">
+  <a href="tel:+573178821345" class="call">📞 Contactar</a>
+  <a href="https://wa.me/573178821345" class="wa">💬 WhatsApp</a>
+</div>
+
+</body>
+</html>
